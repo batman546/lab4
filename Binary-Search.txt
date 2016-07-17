@@ -1,0 +1,64 @@
+/*
+* Program: Binary Search.
+*Author: Milan Budhathoki.
+Date: July 17, 2016.
+Reference:  Data structures using C and C++, chap 2, page 122 
+*/
+
+#include<stdio.h>
+#define max 100
+
+int bSearch(int,int);
+int x;
+char a[max];
+
+int main()
+{
+	int n,i,j;
+	
+	printf("How many elements do you want to enter?\n");
+	scanf("%d",&n);
+	printf("Enter the elements of the sorted array:\n");
+	
+	for(i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	
+	printf("Enter the element you want to search for:\n");
+	scanf("%d",&x);
+	
+	j=bSearch(0,n);
+	
+	if(j==-1)
+	{
+		printf("RESULT NOT FOUND!!");
+	}
+	else
+	{
+		printf("The number %d is found on the array.\n",a[j]);
+	}
+}
+
+int bSearch(int low,int high)
+{
+	int mid;
+	mid=(low+high)/2;
+		
+	if(low>high)
+	{
+		return (-1);
+	}
+	else if(x==a[mid])
+	{
+		return (mid); 
+	}
+	else if(x<a[mid])
+	{
+		bSearch(low,mid-1);
+	}
+	else if(x>a[mid])
+	{
+		bSearch(mid+1,high);
+	}
+}
